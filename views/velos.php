@@ -1,25 +1,16 @@
-<?php
-// views/velo.php
-include __DIR__ . '/templates/header.php';
-?>
+<?php include 'views/templates/header.php'; ?>
 
-<h1>Nos vélos disponibles</h1>
+<h1>Nos Vélos</h1>
 
-<?php if (isset($velos) && count($velos) > 0): ?>
-    <ul>
-        <?php foreach ($velos as $velo): ?>
-            <li>
-                <h3><?php echo htmlspecialchars($velo['nom']); ?></h3>
-                <p><?php echo htmlspecialchars($velo['description']); ?></p>
-                <p>Prix : <?php echo number_format($velo['prix'], 2); ?> €</p>
-                <?php if (!empty($velo['image_url'])): ?>
-                    <img src="<?php echo htmlspecialchars($velo['image_url']); ?>" alt="Image du vélo" />
-                <?php endif; ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-<?php else: ?>
-    <p>Aucun vélo disponible pour le moment.</p>
-<?php endif; ?>
+<?php foreach ($velos as $velo): ?>
+    <div class="velo">
+        <h2><?php echo htmlspecialchars($velo['nom']); ?></h2>
+        <p><?php echo htmlspecialchars($velo['description']); ?></p>
+        <p>Prix : <?php echo number_format($velo['prix'], 2); ?> €</p>
+        <img src="<?php echo htmlspecialchars($velo['image_url']); ?>" alt="Image du vélo">
+        <a href="index.php?page=commander&velo=<?php echo $velo['id_velo']; ?>">Commander</a>
+        <a href="index.php?page=commander&velo=<?php echo $velo['id_velo']; ?>">Plus d'infos</a>
+    </div>
+<?php endforeach; ?>
 
-<?php include __DIR__ . '/templates/footer.php'; ?>
+<?php include 'views/templates/footer.php'; ?>

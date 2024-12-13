@@ -1,5 +1,4 @@
 <?php
-
 class Velo {
     private $pdo;
 
@@ -7,18 +6,23 @@ class Velo {
         $this->pdo = $pdo;
     }
 
-    // Méthode pour récupérer le dernier vélo ajouté
     public function getDernierVelo() {
-        $stmt = $this->pdo->prepare("SELECT * FROM velos ORDER BY date_ajout DESC LIMIT 1");
-        $stmt->execute();
+        $sql = "SELECT * FROM velos ORDER BY date_ajout DESC LIMIT 1";
+        $stmt = $this->pdo->query($sql);
         return $stmt->fetch();
     }
 
-    // Méthode pour récupérer tous les vélos
     public function getTousLesVelos() {
-        $stmt = $this->pdo->prepare("SELECT * FROM velos ORDER BY date_ajout DESC");
-        $stmt->execute();
+        $sql = "SELECT * FROM velos";
+        $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll();
+    }
+
+    public function getVeloParId($id) {
+        $sql = "SELECT * FROM velos WHERE id_velo = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch();
     }
 }
 ?>

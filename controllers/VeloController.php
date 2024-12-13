@@ -7,12 +7,18 @@ class VeloController {
     public function accueil() {
         global $pdo;
         $velo = new Velo($pdo);
-
-        // Récupérer le dernier vélo ajouté
+    
+        // Vérification de la récupération du dernier vélo
         $dernierVelo = $velo->getDernierVelo();
-
-        // Inclure la vue d'accueil et transmettre le dernier vélo
-        require_once 'views/accueil.php';
+    
+        if (!$dernierVelo) {
+            echo "Aucun vélo trouvé.";
+        } else {
+            echo "Vélo trouvé : " . htmlspecialchars($dernierVelo['nom']);
+        }
+    
+        // Inclure la vue d'accueil
+        require_once __DIR__ . '/../views/acceuil.php';
     }
 
     // Méthode pour afficher tous les vélos
@@ -24,7 +30,7 @@ class VeloController {
         $velos = $velo->getTousLesVelos();
 
         // Inclure la vue avec la liste des vélos
-        require_once 'views/velo.php';
+        require_once __DIR__ . '/views/velo.php';
     }
 }
 ?>
