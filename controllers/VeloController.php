@@ -12,7 +12,6 @@ class VeloController {
         if (!$dernierVelo) {
             echo "Aucun vélo trouvé.";
         } else {
-            echo "Vélo trouvé : " . htmlspecialchars($dernierVelo['nom']);
         }
         require_once __DIR__ . '/../views/acceuil.php';
     }
@@ -31,17 +30,5 @@ class VeloController {
         require_once __DIR__ . '/../views/velos.php';
     }
 
-    public function liste  (){
-        global $pdo;
-        $velo = new Velo($pdo);
-        $velos = $velo->getTousLesVelos();
-        require_once __DIR__ . '/../views/velos.php';
-        
-        if (!$velos) {
-            echo "Aucun vélo trouvé.";
-        } else {
-            echo "prout";
-        }
-    }
 }
 ?>

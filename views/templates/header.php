@@ -20,10 +20,10 @@
         <!-- Navigation -->
         <nav>
             <ul class="flex space-x-6 text-lg">
-                <li><a href="/views/acceuil.php" class="hover:text-gray-200">Accueil</a></li>
-                <li><a href="/exam_mvc/views/velos.php" class="hover:text-gray-200">Nos Vélos</a></li>
-                <li><a href="/exam_mvc/views/commander.php" class="hover:text-gray-200">Commander</a></li>
-                <li><a href="/exam_mvc/views/contacts.php" class="hover:text-gray-200">Contact</a></li>
+                <li><a href="/exam_mvc/index.php" class="hover:text-gray-200">Accueil</a></li>
+                <li><a href="/exam_mvc/views/velos" class="hover:text-gray-200">Nos Vélos</a></li>
+                <li><a href="/exam_mvc/views/commander" class="hover:text-gray-200">Commander</a></li>
+                <li><a href="/exam_mvc/views/contacts" class="hover:text-gray-200">Contact</a></li>
             </ul>
         </nav>
     </div>
