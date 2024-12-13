@@ -1,4 +1,4 @@
-<?php include 'views/templates/header.php'; ?>
+<?php include __DIR__ . '/templates/header.php'; ?>
 
 <h1>Bienvenue sur Smartbike</h1>
 <h2>Dernier vélo ajouté</h2>
@@ -11,4 +11,4 @@
     <p>Aucun vélo disponible pour le moment.</p>
 <?php endif; ?>
 
-<?php include 'views/templates/footer.php'; ?>
+<?php include __DIR__ . '/templates/footer.php'; ?>
