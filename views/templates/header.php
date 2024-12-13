@@ -10,6 +10,8 @@
 <body>
 
 <header>
+    <h1><img src="/images/image.png" alt="logo">SMARTBIKE</h1>
+   
     <nav>
         <ul>
             <li><a href="/">Accueil</a></li>
