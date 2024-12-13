@@ -1,7 +1,7 @@
 <?php
 
 require_once 'models/velo.php';
-require_once 'config/config.php';
+
 
 class VeloController {
 
