@@ -3,7 +3,6 @@
 require_once 'models/velo.php';
 
 class VeloController {
-    // Méthode d'accueil pour afficher le dernier vélo
     public function accueil() {
         global $pdo;
         $velo = new Velo($pdo);
