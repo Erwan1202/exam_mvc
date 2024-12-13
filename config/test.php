@@ -1,8 +1,8 @@
 <?php
-require_once 'config.php'; // Assurez-vous que le chemin vers db.php est correct
+require_once 'config.php';
 
 try {
-    // Test de requête simple
+
     $stmt = $pdo->query("SELECT 1");
 
     if ($stmt) {
