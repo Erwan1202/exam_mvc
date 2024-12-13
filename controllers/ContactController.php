@@ -1,6 +1,6 @@
 <?php
 require_once 'models/Contact.php';
-
+require_once 'config/config.php';
 class ContactController {
     public function formulaire() {
         require 'views/contact.php';

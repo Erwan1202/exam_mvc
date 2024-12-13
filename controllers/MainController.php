@@ -1,4 +1,6 @@
 <?php
+
+    
     class MainController{
         public function accueil(){
             $this -> render('accueil');
