@@ -23,14 +23,12 @@ class VeloController {
 
     // Méthode pour afficher tous les vélos
     public function liste() {
-        global $pdo;
+        global $pdo;  // Assurez-vous d'avoir bien une connexion à la base de données
         $velo = new Velo($pdo);
-
-        // Récupérer tous les vélos
-        $velos = $velo->getTousLesVelos();
-
-        // Inclure la vue avec la liste des vélos
-        require_once __DIR__ . '/views/velo.php';
+        $velos = $velo->getTousLesVelos();  // Récupère tous les vélos de la base de données
+    
+        // Passer la variable $velos à la vue
+        require_once 'views/velos.php';
     }
 }
 ?>

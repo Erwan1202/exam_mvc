@@ -12,17 +12,18 @@ class Velo {
         return $stmt->fetch();
     }
 
-    public function getTousLesVelos() {
-        $sql = "SELECT * FROM velos";
-        $stmt = $this->pdo->query($sql);
-        return $stmt->fetchAll();
-    }
 
     public function getVeloParId($id) {
         $sql = "SELECT * FROM velos WHERE id_velo = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();
+    }
+
+    public function getTousLesVelos() {
+        $stmt = $this->pdo->prepare("SELECT * FROM velos");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
     }
 }
 ?>
