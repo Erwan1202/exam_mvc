@@ -1,7 +1,6 @@
 <?php
 
 class MainController {
-    // Méthodes d'affichage des vues
     public function accueil() {
         $this->render('accueil');
     }
@@ -22,13 +21,12 @@ class MainController {
         $this->render('404'); 
     }
 
-    // Méthode de rendu des vues
+
     private function render($view, $data = []) {
-        extract($data);  // Extrait les données pour les rendre accessibles dans la vue
+        extract($data);  
 
-        $viewFile = __DIR__ . '/../views/' . $view . '.php';  // Définir le chemin vers la vue
+        $viewFile = __DIR__ . '/../views/' . $view . '.php'; 
 
-        // Vérifie si la vue existe avant de l'inclure
         if (file_exists($viewFile)) {
             require_once $viewFile;
         } else {
