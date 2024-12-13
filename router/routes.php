@@ -22,6 +22,25 @@ switch ($page) {
         $controller = new ContactController();
         $controller->formulaire();
         break;
+    
+    case 'commander':
+        require_once 'controllers/CommandeController.php';
+        $controller = new CommandeController();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->enregistrer();
+        } else {
+            $controller->formulaire();
+        }
+        break;
+    case 'contact':
+        require_once 'controllers/ContactController.php';
+        $controller = new ContactController();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->enregistrer();
+        } else {
+            $controller->formulaire();
+        }
+        break;
     default:
         echo "Page introuvable.";
 }
