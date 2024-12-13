@@ -10,7 +10,7 @@
 <body>
 
 <header>
-    <img src="/images/image.png" alt="logo">
+    <img src="/exam_mvc/images/image.png" alt="logo">
     <h1>SMARTBIKE</h1>
    
     <nav>

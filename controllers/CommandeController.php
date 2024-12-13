@@ -13,9 +13,14 @@ class CommandeController {
         // Récupérer tous les vélos pour le menu déroulant
         $velo = new Velo($this->pdo);
         $velos = $velo->getTousLesVelos(); // Récupère tous les vélos
-        
-        // Inclure la vue avec les vélos passés en paramètre
-        require_once 'views/commander.php';
+
+        // Vérifiez si les vélos sont récupérés
+        if ($velos) {
+            // Passer les vélos à la vue
+            require_once 'views/commander.php';
+        } else {
+            echo "<p>Aucun vélo trouvé dans la base de données.</p>";
+        }
     }
 
     public function commander() {
@@ -40,8 +45,14 @@ class CommandeController {
         $velo = new Velo($this->pdo);
         $velos = $velo->getTousLesVelos();
 
-        // Inclure la vue de la commande avec les vélos passés en paramètre
-        require_once 'views/commander.php';
+        // Vérifiez si les vélos sont récupérés
+        if ($velos) {
+            // Passer les vélos à la vue
+            require_once 'views/commander.php';
+        } else {
+            echo "<p>Aucun vélo trouvé dans la base de données.</p>";
+        }
     }
 }
+
 ?>

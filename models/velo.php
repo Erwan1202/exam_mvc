@@ -12,12 +12,11 @@ class Velo {
         return $stmt->fetch();
     }
 
-
     public function getVeloParId($id) {
         $sql = "SELECT * FROM velos WHERE id_velo = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
-        return $stmt->fetch();
+        return $stmt->fetch();  // Remplacez fetAch() par fetch()
     }
 
     public function getTousLesVelos() {
@@ -26,4 +25,5 @@ class Velo {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);  
     }
 }
+
 ?>
