@@ -27,10 +27,9 @@ class VeloController {
             echo "Aucun vélo trouvé.";
         } else {
             echo "prout";
-        }// Récupère tous les vélos de la base de données
+        }
 
-        // Passer les données des vélos à la vue catalogue
-        require_once __DIR__ . '/../views/catalogue.php';
+        require_once __DIR__ . '/../views/velos.php';
     }
 
     public function liste  (){

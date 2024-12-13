@@ -22,7 +22,8 @@ class Velo {
     public function getTousLesVelos() {
         $stmt = $this->pdo->prepare("SELECT * FROM velos");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        var_dump($velos); 
     }
 }
 

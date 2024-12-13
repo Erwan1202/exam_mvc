@@ -20,7 +20,7 @@
         <!-- Navigation -->
         <nav>
             <ul class="flex space-x-6 text-lg">
-                <li><a href="/index.php" class="hover:text-gray-200">Accueil</a></li>
+                <li><a href="/views/acceuil.php" class="hover:text-gray-200">Accueil</a></li>
                 <li><a href="/exam_mvc/views/velos.php" class="hover:text-gray-200">Nos Vélos</a></li>
                 <li><a href="/exam_mvc/views/commander.php" class="hover:text-gray-200">Commander</a></li>
                 <li><a href="/exam_mvc/views/contacts.php" class="hover:text-gray-200">Contact</a></li>
