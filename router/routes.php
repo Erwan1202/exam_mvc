@@ -1,41 +1,39 @@
 <?php
-// Récupération de la page demandée, par défaut 'accueil'
-$page = $_GET['page'] ?? 'accueil';
+require_once __DIR__ . '/../../vendor/autoload.php';  // Charge les dépendances de Composer
+require_once __DIR__ . '/../controllers/VeloController.php';
+require_once __DIR__ . '/../controllers/CommandeController.php';
+require_once __DIR__ . '/../controllers/ContactController.php';
 
-switch ($page) {
-    case 'accueil':
-        require_once 'controllers/VeloController.php';
-        $controller = new VeloController();
-        $controller->accueil();
-        break;
+// Initialisation du routeur AltoRouter
+$router = new AltoRouter();
 
-    case 'velos':
-        require_once 'controllers/VeloController.php';
-        $controller = new VeloController();
-        $controller->liste();
-        break;
+// Définir le chemin de base (si nécessaire)
+$basePath = isset($_SERVER['BASE_URI']) ? $_SERVER['BASE_URI'] : '';
+$router->setBasePath($basePath);
 
-    case 'commander':
-        require_once 'controllers/CommandeController.php';
-        $controller = new CommandeController();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->enregistrer(); // Gestion des commandes (POST)
-        } else {
-            $controller->formulaire(); // Affichage du formulaire (GET)
-        }
-        break;
+// Définition des routes
+$router->map('GET', '/', 'VeloController#accueil', 'accueil');
+$router->map('GET', '/velos', 'VeloController#liste', 'velos');
+$router->map('GET|POST', '/commander', 'CommandeController#formulaire', 'commander');
+$router->map('GET|POST', '/contact', 'ContactController#formulaire', 'contact');
 
-    case 'contact':
-        require_once 'controllers/ContactController.php';
-        $controller = new ContactController();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->enregistrer(); // Gestion des messages de contact (POST)
-        } else {
-            $controller->formulaire(); // Affichage du formulaire (GET)
-        }
-        break;
+// Récupération de la route actuelle
+$match = $router->match();
 
-    default:
-        echo "Page introuvable."; // Gestion des pages non définies
+// Vérification de la route correspondante
+if ($match) {
+    // Extraction du contrôleur et de l'action à appeler
+    list($controllerName, $action) = explode('#', $match['target']);
+    $controller = new $controllerName();
+
+    // Appel de l'action avec les paramètres
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->$action($_POST);  // Passer les données POST pour enregistrer ou traiter
+    } else {
+        $controller->$action();  // Affichage de la page
+    }
+} else {
+    // Gestion des pages non définies (404)
+    echo "Page introuvable.";
 }
 ?>
