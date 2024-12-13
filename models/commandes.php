@@ -18,5 +18,10 @@ class Commande {
         $stmt = $this->pdo->query("SELECT * FROM commandes ORDER BY date_commande DESC");
         return $stmt->fetchAll();
     }
+
+    public function enregistrerCommande($id_velo, $nom, $prenom, $email, $message) {
+        $stmt = $this->pdo->prepare("INSERT INTO commandes (id_velo, nom, prenom, email, message) VALUES (?, ?, ?, ?, ?)");
+        return $stmt->execute([$id_velo, $nom, $prenom, $email, $message]);
+    }
 }
 ?>

@@ -30,5 +30,14 @@ class VeloController {
         // Passer la variable $velos à la vue
         require_once 'views/velos.php';
     }
+
+    public function getTousLesVelos() {
+        // Connexion à la base de données
+        $pdo = new PDO('mysql:host=localhost;dbname=smartbike', 'root', '');
+        $sql = 'SELECT * FROM velos';  // Assurez-vous que cette table et les colonnes existent
+        $stmt = $pdo->query($sql);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  // Retourne un tableau associatif de tous les vélos
+    }
 }
 ?>
