@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';  // Charge les dépendances de Composer
+require_once __DIR__ . '/../vendor/autoload.php';  // Charge les dépendances de Composer
 require_once __DIR__ . '/../controllers/VeloController.php';
 require_once __DIR__ . '/../controllers/CommandeController.php';
 require_once __DIR__ . '/../controllers/ContactController.php';
