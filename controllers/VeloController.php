@@ -8,7 +8,6 @@ class VeloController {
         global $pdo;
         $velo = new Velo($pdo);
     
-        // Vérification de la récupération du dernier vélo
         $dernierVelo = $velo->getDernierVelo();
     
         if (!$dernierVelo) {
@@ -16,28 +15,29 @@ class VeloController {
         } else {
             echo "Vélo trouvé : " . htmlspecialchars($dernierVelo['nom']);
         }
-    
-        // Inclure la vue d'accueil
         require_once __DIR__ . '/../views/acceuil.php';
     }
 
-    // Méthode pour afficher tous les vélos
-    public function liste() {
-        global $pdo;  // Assurez-vous d'avoir bien une connexion à la base de données
+    public function catalogue() {
+        global $pdo; // Assurez-vous que $pdo est une connexion valide
         $velo = new Velo($pdo);
-        $velos = $velo->getTousLesVelos();  // Récupère tous les vélos de la base de données
-    
-        // Passer la variable $velos à la vue
-        require_once 'views/velos.php';
+        $velos = $velo->getTousLesVelos(); 
+        
+        if (!$velos) {
+            echo "Aucun vélo trouvé.";
+        } else {
+            echo "prout";
+        }// Récupère tous les vélos de la base de données
+
+        // Passer les données des vélos à la vue catalogue
+        require_once __DIR__ . '/../views/catalogue.php';
     }
 
-    public function getTousLesVelos() {
-        // Connexion à la base de données
-        $pdo = new PDO('mysql:host=localhost;dbname=smartbike', 'root', '');
-        $sql = 'SELECT * FROM velos';  // Assurez-vous que cette table et les colonnes existent
-        $stmt = $pdo->query($sql);
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);  // Retourne un tableau associatif de tous les vélos
+    public function liste  (){
+        global $pdo;
+        $velo = new Velo($pdo);
+        $velos = $velo->getTousLesVelos();
+        require_once __DIR__ . '/../views/velos.php';
     }
 }
 ?>

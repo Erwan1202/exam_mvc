@@ -1,12 +1,12 @@
 <?php
-// views/accueil.php
+
 include __DIR__ . '/templates/header.php';
 ?>
 
 <main class="max-w-6xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-lg">
     <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Bienvenue sur Smartbike</h1>
 
-    <!-- Affichage du dernier vélo ajouté -->
+
     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Dernier vélo ajouté</h2>
 
     <?php if (isset($dernierVelo) && $dernierVelo): ?>
