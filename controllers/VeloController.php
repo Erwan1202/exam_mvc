@@ -19,7 +19,7 @@ class VeloController {
     }
 
     public function catalogue() {
-        global $pdo; // Assurez-vous que $pdo est une connexion valide
+        global $pdo; 
         $velo = new Velo($pdo);
         $velos = $velo->getTousLesVelos(); 
         
@@ -37,6 +37,12 @@ class VeloController {
         $velo = new Velo($pdo);
         $velos = $velo->getTousLesVelos();
         require_once __DIR__ . '/../views/velos.php';
+        
+        if (!$velos) {
+            echo "Aucun vélo trouvé.";
+        } else {
+            echo "prout";
+        }
     }
 }
 ?>
